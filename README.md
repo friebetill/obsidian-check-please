@@ -48,9 +48,15 @@ The plugin recognizes these checkbox formats:
 
 ## Installation
 
-1. Download the plugin files
-2. Place them in your `.obsidian/plugins/obsidian-check-please/` directory
-3. Enable the plugin in Obsidian's Community Plugins settings
+### Download from GitHub Releases (Recommended)
+1. Go to the [Releases section](../../releases) on the right side of this GitHub page
+2. Download the latest release zip file
+3. Extract the zip file
+4. Copy the extracted folder to your `.obsidian/plugins/` directory in your vault
+5. Restart Obsidian or reload the plugins
+6. Enable "Check Please!" in Settings → Community Plugins
+
+**Note**: Make sure the plugin folder is located at: `YourVault/.obsidian/plugins/obsidian-check-please/`
 
 ## Compatibility
 
