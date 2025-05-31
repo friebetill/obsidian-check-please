@@ -6,3 +6,67 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+/* Ensure checkboxes are clickable and isolated */
+.cp-checkbox {
+	cursor: pointer;
+	margin-right: 0.5em;
+	vertical-align: middle;
+	position: relative;
+	z-index: 10;
+	user-select: none !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	pointer-events: all !important;
+}
+
+/* Prevent text selection in table cells with checkboxes */
+td:has(.cp-checkbox) {
+	user-select: none !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+}
+
+/* Ensure checkboxes remain interactive in all modes */
+.markdown-reading-view .cp-checkbox,
+.cm-content .cp-checkbox {
+	pointer-events: all !important;
+	user-select: none !important;
+}
+
+/* Prevent selection when hovering over checkboxes */
+.cp-checkbox:hover,
+.cp-checkbox:focus,
+.cp-checkbox:active {
+	user-select: none !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+}
+
+/* Ensure parent elements don't interfere */
+td:has(.cp-checkbox):hover,
+td:has(.cp-checkbox):focus-within {
+	user-select: none !important;
+	-webkit-user-select: none !important;
+	cursor: default;
+}
+
+/* Remove any conflicting styles that might prevent interaction */
+.cm-content .cp-checkbox {
+	pointer-events: auto;
+}
+
+/* Prevent CodeMirror from selecting text when clicking checkboxes */
+.cm-line:has(.cp-checkbox) {
+	user-select: none;
+}
+
+/* Override any table cell selection styles */
+.markdown-source-view.mod-cm6 .cm-content td:has(.cp-checkbox),
+.markdown-reading-view td:has(.cp-checkbox) {
+	user-select: none !important;
+	-webkit-user-select: none !important;
+}

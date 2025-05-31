@@ -3,13 +3,21 @@
 `Check, please!` is an [Obsidian](https://obsidian.md) plugin that adds support for stateful, in-table checkboxes.
 
 ## usage
-Simply add a Markdown checkbox (`- [ ]`) at the beginning of your table cell while in Edit Mode. Be sure not to remove the annotation applied (i.e. `{0}`) to in-table checkboxes.
+Simply add Markdown checkboxes (`- [ ]`) in your table cells. Multiple checkboxes per cell are supported. Be sure not to remove the annotation applied (i.e. `{0}`) to in-table checkboxes.
 
 A simple example:
 ```markdown
 | Item | Packed? | Comments |
 |---|---|---|
-| Backpack |- [x]| Osprey Skarab 30L |
+| Backpack |- [x]{0}| Osprey Skarab 30L |
+```
+
+Multiple checkboxes example:
+```markdown
+| Tasks | Status | Priority |
+|---|---|---|
+| Morning routine | - [x]{0} Wake up - [x]{1} Breakfast - [ ]{2} Exercise | High |
+| Work tasks | - [ ]{3} Email - [ ]{4} Meeting - [ ]{5} Report | Medium |
 ```
 
 A video example:
@@ -23,8 +31,7 @@ When you open or edit a Markdown file, `Check, Please!` does the following:
 
 ## limitations and wonky behavior
 ### current limitations
-- Only one checkbox per table cell is supported.
-- The checkbox **MUST** occur at the beginning of your Markdown table cell.
+- Checkboxes must be formatted as `- [ ]` or `- [x]` (with the dash).
 
 ### wonky behavior: phantom table rows
 In Edit mode, every line of the following is interpreted as a table row:
