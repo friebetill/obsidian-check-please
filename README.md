@@ -1,56 +1,60 @@
-# Check, please!
+# Check Please!
 
-`Check, please!` is an [Obsidian](https://obsidian.md) plugin that adds support for stateful, in-table checkboxes.
+An [Obsidian](https://obsidian.md) plugin that enables interactive checkboxes within table cells, supporting multiple checkboxes per cell.
 
-## usage
-Simply add Markdown checkboxes (`- [ ]`) in your table cells. Multiple checkboxes per cell are supported. Be sure not to remove the annotation applied (i.e. `{0}`) to in-table checkboxes.
+## Features
 
-A simple example:
+✅ **Interactive checkboxes in tables** - Click to toggle checkbox states directly in Reading mode and Live Preview
+✅ **Multiple checkboxes per cell** - Support for multiple checkboxes within a single table cell
+✅ **Smart targeting** - Each checkbox toggles independently without affecting others
+✅ **No annotations required** - Clean markdown without additional syntax
+✅ **Works in all modes** - Reading mode and Normal mode (Live Preview) support
+
+## Usage
+
+Simply add standard Markdown checkboxes (`[x]` or `[ ]`) anywhere in your table cells. No special syntax or annotations needed.
+
+### Single checkbox per cell:
 ```markdown
-| Item | Packed? | Comments |
-|---|---|---|
-| Backpack |- [x]{0}| Osprey Skarab 30L |
+| Task                | Status | Priority |
+|---------------------|--------|----------|
+| Write documentation | [x]    | High     |
+| Fix bugs            | [ ]    | Medium   |
+| Review code         | [x]    | High     |
 ```
 
-Multiple checkboxes example:
+### Multiple checkboxes per cell:
 ```markdown
-| Tasks | Status | Priority |
-|---|---|---|
-| Morning routine | - [x]{0} Wake up - [x]{1} Breakfast - [ ]{2} Exercise | High |
-| Work tasks | - [ ]{3} Email - [ ]{4} Meeting - [ ]{5} Report | Medium |
+| Category | Items                           |
+|----------|---------------------------------|
+| Shopping | [x] Milk [x] Bread [ ] Eggs    |
+| Coding   | [x] Commit [x] Push [ ] Deploy |
 ```
 
-A video example:
-![Video preview of plugin. Shows how to create a checkbox and how to interact with it.](./demo.gif)
+## How It Works
 
-## how it works
-When you open or edit a Markdown file, `Check, Please!` does the following:
-- Finds all checkboxes present in table cells.
-- "Annotates" these checkboxes with a unique identifier. An annotated cell will appear in your Markdown as `- [ ]{0}` with `{0}` being the full annotation and `0` being its unique identifier.
-- Whenever the checkbox is toggled (in both Edit and Reading mode), the Markdown is updated to reflect the checkbox's new state by using an `onClick` event listener.
+The plugin automatically detects checkboxes in table cells and makes them interactive:
 
-## limitations and wonky behavior
-### current limitations
-- Checkboxes must be formatted as `- [ ]` or `- [x]` (with the dash).
+- **Reading Mode**: All checkboxes in tables become clickable and update the underlying markdown
+- **Normal Mode (Live Preview)**: Checkboxes become interactive when editing focused cells
+- **Smart Matching**: Uses context-aware matching to ensure each checkbox toggles the correct one in the source markdown
 
-### wonky behavior: phantom table rows
-In Edit mode, every line of the following is interpreted as a table row:
-```
-| Item | Packed? | Comments |
-|---|---|---|
-| Backpack | - [x]{0} | Osprey Skarab 30L |
-| Tent | - [ ]{1}
-| - [ ]{2}
-```
+## Supported Formats
 
-However, the last line (`| - [ ] `) in Reading mode appears as a normal paragraph. So while this plugin will present you a checkbox in Edit mode, Reading mode will show the literal text of `| - [ ]{2}`. This is caused by how Obsidian parses tables rather than an issue with this plugin. You can avoid this behavior by ending all table rows with the pipe character `|`.
+The plugin recognizes these checkbox formats:
+- `[ ]` - Unchecked
+- `[x]` - Checked
+- `[X]` - Checked (uppercase)
 
-## syntax decisions
-As with a number of Obsidian plugins, there is a tradeoff between portability of Markdown files and usefulness in Obsidian. `Check, Please!` also must tow this line.
+## Installation
 
-First, the syntax for declaring a checkbox within a table is very similar to declaring a normal Markdown checkbox, but an in-table checkbox does not need to fully match the format of a normal Markdown checkbox which is normally declared by writing `- [ ] `; notably, there must be a space after the closing bracket `]`. However, this space becomes visible when Obsidian presents a table in Reading mode, so `Check, Please!` makes that space optional for formatting reasons if the content of the cell is only a checkbox.
+1. Download the plugin files
+2. Place them in your `.obsidian/plugins/obsidian-check-please/` directory
+3. Enable the plugin in Obsidian's Community Plugins settings
 
-Additionally, Obsidian does not seem to provide API functionality needed by this plugin to meaningfully communicate state between Edit and Reading mode. For this reason, this plugin annotates within the Markdown each in-table checkbox with a unique identifier. When it makes sense to, this plugin obscures the source Markdown (annotation and all) in Edit mode through the use of decorations.
+## Compatibility
 
-Ultimately, `Check, Please!` extends the Markdown specification to provide some functionality in Obsidian, so this plugin is Obsidian-first, but this plugin allows for _some_ portability. Mainly, when previewed elsewhere, tables cells with checkboxes will appear as `- [ ]{1234}` (unchecked) or `- [x]{5678}` (checked). While this isn't the cleanest presentation, at least it is still identifiable as checked or not.
+- Works with standard Markdown table syntax
+- No special annotations or syntax required
+- Portable - your markdown files remain clean and readable in other editors
 
