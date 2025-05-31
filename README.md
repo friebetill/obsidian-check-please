@@ -4,11 +4,11 @@ An [Obsidian](https://obsidian.md) plugin that enables interactive checkboxes wi
 
 ## Features
 
-✅ **Interactive checkboxes in tables** - Click to toggle checkbox states directly in Reading mode and Live Preview
-✅ **Multiple checkboxes per cell** - Support for multiple checkboxes within a single table cell
-✅ **Smart targeting** - Each checkbox toggles independently without affecting others
-✅ **No annotations required** - Clean markdown without additional syntax
-✅ **Works in all modes** - Reading mode and Normal mode (Live Preview) support
+- ✅ **Interactive checkboxes in tables** - Click to toggle checkbox states directly in Reading mode and Live Preview
+- ✅ **Multiple checkboxes per cell** - Support for multiple checkboxes within a single table cell
+- ✅ **Smart targeting** - Each checkbox toggles independently without affecting others
+- ✅ **No annotations required** - Clean markdown without additional syntax
+- ✅ **Works in all modes** - Reading mode and Normal mode (Live Preview) support
 
 ## Usage
 
